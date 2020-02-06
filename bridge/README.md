@@ -5,9 +5,7 @@ folder: bridge
 permalink: /patterns/bridge/
 categories: Structural
 tags:
- - Java
- - Gang Of Four
- - Difficulty-Intermediate
+ - Gang of Four
 ---
 
 ## Also known as
@@ -34,7 +32,7 @@ Wikipedia says
 
 Translating our weapon example from above. Here we have the `Weapon` hierarchy
 
-```
+```java
 public interface Weapon {
   void wield();
   void swing();
@@ -109,7 +107,7 @@ public class Hammer implements Weapon {
 
 And the separate enchantment hierarchy
 
-```
+```java
 public interface Enchantment {
   void onActivate();
   void apply();
@@ -155,8 +153,8 @@ public class SoulEatingEnchantment implements Enchantment {
 
 And both the hierarchies in action
 
-```
-Sword enchantedSword = new Sword(new SoulEatingEnchantment());
+```java
+var enchantedSword = new Sword(new SoulEatingEnchantment());
 enchantedSword.wield();
 enchantedSword.swing();
 enchantedSword.unwield();
@@ -167,7 +165,7 @@ enchantedSword.unwield();
 // The sword is unwielded.
 // Bloodlust slowly disappears.
 
-Hammer hammer = new Hammer(new FlyingEnchantment());
+var hammer = new Hammer(new FlyingEnchantment());
 hammer.wield();
 hammer.swing();
 hammer.unwield();
@@ -178,6 +176,9 @@ hammer.unwield();
 // The hammer is unwielded.
 // The item's glow fades.
 ```
+
+## Class diagram
+![alt text](./etc/bridge.urm.png "Bridge class diagram")
 
 ## Applicability
 Use the Bridge pattern when

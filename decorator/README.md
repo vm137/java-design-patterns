@@ -5,9 +5,8 @@ folder: decorator
 permalink: /patterns/decorator/
 categories: Structural
 tags:
- - Java
  - Gang Of Four
- - Difficulty-Beginner
+ - Extensibility
 ---
 
 ## Also known as
@@ -36,7 +35,7 @@ Wikipedia says
 
 Let's take the troll example. First of all we have a simple troll implementing the troll interface
 
-```
+```java
 public interface Troll {
   void attack();
   int getAttackPower();
@@ -66,7 +65,7 @@ public class SimpleTroll implements Troll {
 
 Next we want to add club for the troll. We can do it dynamically by using a decorator
 
-```
+```java
 public class ClubbedTroll implements Troll {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(ClubbedTroll.class);
@@ -97,17 +96,20 @@ public class ClubbedTroll implements Troll {
 
 Here's the troll in action
 
-```
+```java
 // simple troll
-Troll troll = new SimpleTroll();
+var troll = new SimpleTroll();
 troll.attack(); // The troll tries to grab you!
 troll.fleeBattle(); // The troll shrieks in horror and runs away!
 
 // change the behavior of the simple troll by adding a decorator
-troll = new ClubbedTroll(troll);
-troll.attack(); // The troll tries to grab you! The troll swings at you with a club!
-troll.fleeBattle(); // The troll shrieks in horror and runs away!
+var clubbedTroll = new ClubbedTroll(troll);
+clubbedTroll.attack(); // The troll tries to grab you! The troll swings at you with a club!
+clubbedTroll.fleeBattle(); // The troll shrieks in horror and runs away!
 ```
+
+## Class diagram
+![alt text](./etc/decorator.urm.png "Decorator pattern class diagram")
 
 ## Applicability
 Use Decorator
